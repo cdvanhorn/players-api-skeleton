@@ -1,0 +1,4 @@
+- Install npm, sudo apt-get install npm
+- sudo apt-get install mongodb
+- start mongo sudo /etc/init.d/mongodb start or sudo service mongodb start
+- install mongoose, npm install mongoose

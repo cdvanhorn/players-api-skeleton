@@ -6,6 +6,10 @@
   "directories": {
     "test": "test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdvanhorn/players-api-skeleton"
+  },
   "scripts": {
     "test": "mocha test/**/*.spec.js"
   },
@@ -20,5 +24,8 @@
     "mocha": "^3.4.2",
     "sinon": "^2.3.4",
     "sinon-chai": "^2.11.0"
+  },
+  "dependencies": {
+    "mongoose": "^4.13.5"
   }
 }
