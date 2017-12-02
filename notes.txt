@@ -4,11 +4,14 @@
 - install mongoose, npm install mongoose
 - connect to mongo db server, "mongo"
 - create database, "use pingpong"
-- create api file structure api/controllers, api/models, api/routes
-david@luigi:~/Projects/players-api-skeleton$ touch api/models/user.js
-david@luigi:~/Projects/players-api-skeleton$ touch api/models/player.js 
-david@luigi:~/Projects/players-api-skeleton$ touch api/controllers/user.js
-david@luigi:~/Projects/players-api-skeleton$ touch api/controllers/player.js
-david@luigi:~/Projects/players-api-skeleton$ touch api/routes/index.js
+- create api file structure src/controllers, src/routes
 - install express, npm install express
-- create config.js and server.js
+- create src/config.js
+
+TODO:
+- do proper error handling
+- write/find jwt middleware
+- update user model
+- fully implement post /api/user
+- implement /api/login
+- implement player endpoints
