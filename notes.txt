@@ -2,3 +2,13 @@
 - sudo apt-get install mongodb
 - start mongo sudo /etc/init.d/mongodb start or sudo service mongodb start
 - install mongoose, npm install mongoose
+- connect to mongo db server, "mongo"
+- create database, "use pingpong"
+- create api file structure api/controllers, api/models, api/routes
+david@luigi:~/Projects/players-api-skeleton$ touch api/models/user.js
+david@luigi:~/Projects/players-api-skeleton$ touch api/models/player.js 
+david@luigi:~/Projects/players-api-skeleton$ touch api/controllers/user.js
+david@luigi:~/Projects/players-api-skeleton$ touch api/controllers/player.js
+david@luigi:~/Projects/players-api-skeleton$ touch api/routes/index.js
+- install express, npm install express
+- create config.js and server.js
