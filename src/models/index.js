@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const options = {
   toJSON: {
-    transform: function (doc, ret, options) {
+    transform: function(doc, ret, options) {
       ret.id = ret._id;
       delete ret._id;
       delete ret.__v;
@@ -41,8 +41,8 @@ User.schema.path('email').validate({
   validator: function(value, respond) {
     var our_id = this.id;
     User.findOne({email: value}, function(err, user) {
-      if(err) throw err;
-      if(user && our_id !== user.id) respond(false);
+      if (err) throw err;
+      if (user && our_id !== user.id) respond(false);
       respond(true);
     });
   },
@@ -91,8 +91,8 @@ const fullnameValidator = {
     var last_name = this.last_name;
     var first_name = this.first_name;
     Player.findOne({first_name: first_name, last_name: last_name}, function(err, player) {
-      if(err) throw err;
-      if(player) respond(false);
+      if (err) throw err;
+      if (player) respond(false);
       respond(true);
     });
   },
