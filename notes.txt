@@ -8,8 +8,9 @@
 - install express, npm install express
 - create src/config.js
 - npm install jwt-express to handle jwt tokens
+- npm install mongoose-bcrypt, does password hashing and comparing
 
 TODO:
 - do proper error handling /api/user
-- implement /api/login
 - implement player endpoints
+- refactor
