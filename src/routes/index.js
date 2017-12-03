@@ -11,4 +11,6 @@ module.exports = function(app) {
   app.route('/api/players')
     .post(playercontroller.create_a_player)
     .get(playercontroller.list_players);
+  app.route('/api/players/:playerId')
+    .delete(playercontroller.delete_player);
 };
