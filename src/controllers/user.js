@@ -45,7 +45,7 @@ exports.login_user = function(req, res) {
             }
             
             //TODO: abstract this out
-            const token = jwt.create(config.secret, user).token;
+            const token = jwt.create(config.secret, user.toJSON()).token;
             return res.status(200).json({
                 "success": true,
                 "user": user,
@@ -88,20 +88,11 @@ exports.create_a_user = function(req, res) {
                 "message": err.message
             });
         }
-        const token = jwt.create(config.secret, user).token;
+        const token = jwt.create(config.secret, user.toJSON()).token;
         return res.status(201).json({
             "success": true,
             "user": user,
             "token": token
         });
     });
-
-    /*
-    var new_task = new Task(req.body);
-    new_task.save(function(err, task) {
-        if (err)
-        res.send(err);
-        res.json(task);
-    });
-    */
 };
