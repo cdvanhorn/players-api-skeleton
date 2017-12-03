@@ -9,6 +9,3 @@
 - create src/config.js
 - npm install jwt-express to handle jwt tokens
 - npm install mongoose-bcrypt, does password hashing and comparing
-
-TODO:
-- refactor

@@ -16,7 +16,7 @@ const options = {
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-//User Schema and it's validators
+//User Schema and its validators
 var UserSchema = new Schema({
   first_name: {
     type: String,
@@ -62,7 +62,7 @@ User.schema.path('email').validate(function(value) {
 }, 'invalid email address');
 
 ///////////////////////////////////////////////////////////////////////////////
-//Player schema and it's validators
+//Player schema and its validators
 var PlayerSchema = new Schema({
   first_name: {
     type: String,
