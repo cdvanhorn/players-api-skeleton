@@ -8,7 +8,6 @@ const options = {
       delete ret._id;
       delete ret.__v;
       delete ret.password;
-      delete ret.user;
     }
   }
 };
@@ -75,9 +74,9 @@ var PlayerSchema = new Schema({
     enum: ['left', 'right'],
     required: true
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
+  created_by: {
+    type: String,
+    required: true
   }
 }, options);
 var Player = mongoose.model('Player', PlayerSchema);

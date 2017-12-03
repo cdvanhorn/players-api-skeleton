@@ -9,5 +9,6 @@ module.exports = function(app) {
   app.route('/api/login')
     .post(usercontroller.login_user);
   app.route('/api/players')
-    .post(playercontroller.create_a_player);
+    .post(playercontroller.create_a_player)
+    .get(playercontroller.list_players);
 };
