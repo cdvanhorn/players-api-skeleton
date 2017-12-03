@@ -11,6 +11,4 @@
 - npm install mongoose-bcrypt, does password hashing and comparing
 
 TODO:
-- do proper error handling /api/user
-- implement player endpoints
 - refactor
