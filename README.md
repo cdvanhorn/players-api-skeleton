@@ -114,7 +114,7 @@ Players consist of the following information:
 {
   "first_name": "<string>",
   "last_name": "<string>",
-  "rating": "<number",
+  "rating": "<number>",
   "handedness": "left|right"
 }
 ```
