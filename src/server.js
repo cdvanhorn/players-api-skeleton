@@ -3,6 +3,7 @@ const config = require('./config');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const jwt = require('jwt-express');
 
 const app = express();
 
@@ -24,6 +25,11 @@ app.listen(config.port, () => {
         //middleware to parse json body
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
+
+        //add configure jwt
+        app.use(jwt.init(config.secret, {
+            cookies: false
+        }));
 
         //load routes
         var routes = require('./routes/index');

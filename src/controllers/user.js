@@ -1,6 +1,8 @@
 'use strict';
 var mongoose = require('mongoose');
 const { User } = require('../models');
+const config = require('../config');
+const jwt = require('jwt-express');
 
 exports.create_a_user = function(req, res) {
     //we're only allowing application/json
@@ -14,6 +16,7 @@ exports.create_a_user = function(req, res) {
     //make sure we have a password property and a confirm_password property
     if(!data.hasOwnProperty('password') || !data.hasOwnProperty('confirm_password')) {
         return res.status(409).json({
+            "success": false,
             "message": "password required"
         })
     }
@@ -21,6 +24,7 @@ exports.create_a_user = function(req, res) {
     //check to make sure the passwords match
     if(data.password !== data.confirm_password) {
         return res.status(409).json({
+            "success": false,
             "message": "password mismatch"
         })
     }
@@ -29,11 +33,15 @@ exports.create_a_user = function(req, res) {
     user.save(function(err) {
         if(err) {
             return res.status(409).json({
+                "success": false,
                 "message": err.message
             });
         }
+        const token = jwt.create(config.secret, user).token;
         return res.status(201).json({
-            "user": user
+            "success": true,
+            "user": user,
+            "token": token
         });
     });
 

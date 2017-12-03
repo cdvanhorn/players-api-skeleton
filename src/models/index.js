@@ -1,5 +1,15 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const options = {
+  toJSON: {
+    transform: function (doc, ret, options) {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.__v;
+    }
+  }
+};
 
 var UserSchema = new Schema({
   first_name: {
@@ -14,7 +24,7 @@ var UserSchema = new Schema({
     type: String,
     required: true
   }
-});
+}, options);
 
 var PlayerSchema = new Schema({
   first_name: {
@@ -30,7 +40,7 @@ var PlayerSchema = new Schema({
     type: String,
     enum: ['left', 'right']
   }
-});
+}, options);
 
 //setup email validation for the user, must be unique and email like
 //could have done uniqe validation with mongoose-unique-validator module

@@ -7,10 +7,9 @@
 - create api file structure src/controllers, src/routes
 - install express, npm install express
 - create src/config.js
+- npm install jwt-express to handle jwt tokens
 
 TODO:
 - do proper error handling /api/user
-- write/find jwt middleware
-- fully implement post /api/user
 - implement /api/login
 - implement player endpoints
