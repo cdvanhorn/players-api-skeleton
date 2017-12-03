@@ -35,7 +35,9 @@ app.listen(config.port, function() {
     var routes = require('./routes/index');
     routes(app);
 
-    console.log(`Server is listening on port ${config.port}`);
+    if (config.env === 'development') {
+      console.log(`Server is listening on port ${config.port}`);
+    }
   });
 });
 

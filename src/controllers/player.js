@@ -1,5 +1,6 @@
 'use strict';
 const { Player } = require('../models');
+const basecontroller = require('./base');
 
 exports.delete_player = function(req, res) {
   if (!req.jwt.valid) {
@@ -22,7 +23,7 @@ exports.delete_player = function(req, res) {
     }
     player.remove(function(err) {
       if (err) {
-        console.log(err);
+        console.error(err);
         return res.sendStatus(500);
       }
     });
@@ -41,6 +42,7 @@ exports.list_players = function(req, res) {
   Player.find({created_by: userid}, function(err, players) {
     if (err) {
       //something bad happened
+      console.error(err);
       return res.sendStatus(500);
     }
     return res.status(200).json({
@@ -53,8 +55,7 @@ exports.list_players = function(req, res) {
 exports.create_a_player = function(req, res) {
   //we're only allowing application/json
   if (!req.is('application/json')) {
-    //TODO: make this return a sane error
-    res.send('nuts');
+    return res.sendStatus(415);
   }
 
   //make sure they provided a bearer token, and it's valid
@@ -70,10 +71,7 @@ exports.create_a_player = function(req, res) {
   var player = new Player(data);
   player.save(function(err) {
     if (err) {
-      return res.status(409).json({
-        'success': false,
-        'message': err.message
-      });
+      return basecontroller.sendValidationError(res, err.message);
     }
     return res.status(201).json({
       'success': true,

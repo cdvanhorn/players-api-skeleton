@@ -1,6 +1,9 @@
+'use strict';
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//options used to convert mongo _id field to id
+//and strip out fields don't want sent with json
 const options = {
   toJSON: {
     transform: function(doc, ret, options) {
@@ -12,6 +15,8 @@ const options = {
   }
 };
 
+///////////////////////////////////////////////////////////////////////////////
+//User Schema and it's validators
 var UserSchema = new Schema({
   first_name: {
     type: String,
@@ -56,6 +61,8 @@ User.schema.path('email').validate(function(value) {
   return emailre.test(value);
 }, 'invalid email address');
 
+///////////////////////////////////////////////////////////////////////////////
+//Player schema and it's validators
 var PlayerSchema = new Schema({
   first_name: {
     type: String,
