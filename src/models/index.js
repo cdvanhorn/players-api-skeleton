@@ -7,6 +7,7 @@ const options = {
       ret.id = ret._id;
       delete ret._id;
       delete ret.__v;
+      delete ret.password;
     }
   }
 };
@@ -23,8 +24,14 @@ var UserSchema = new Schema({
   email: {
     type: String,
     required: true
+  },
+  password: {
+    type: String,
+    required: true,
+    bcrypt: true
   }
 }, options);
+UserSchema.plugin(require('mongoose-bcrypt'));
 
 var PlayerSchema = new Schema({
   first_name: {
