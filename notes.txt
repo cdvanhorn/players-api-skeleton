@@ -9,9 +9,8 @@
 - create src/config.js
 
 TODO:
-- do proper error handling
+- do proper error handling /api/user
 - write/find jwt middleware
-- update user model
 - fully implement post /api/user
 - implement /api/login
 - implement player endpoints

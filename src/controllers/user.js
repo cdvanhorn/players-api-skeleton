@@ -6,19 +6,35 @@ exports.create_a_user = function(req, res) {
     //we're only allowing application/json
     if (!req.is('application/json')) {
         //TODO: make this return a sane error
-        //TODO: figure out error returning in express
         res.send('nuts');
     }
 
-    User.remove({});
     var data = req.body || {};
+
+    //make sure we have a password property and a confirm_password property
+    if(!data.hasOwnProperty('password') || !data.hasOwnProperty('confirm_password')) {
+        return res.status(409).json({
+            "message": "password required"
+        })
+    }
+
+    //check to make sure the passwords match
+    if(data.password !== data.confirm_password) {
+        return res.status(409).json({
+            "message": "password mismatch"
+        })
+    }
 
     var user = new User(data);
     user.save(function(err) {
         if(err) {
-            //do something
+            return res.status(409).json({
+                "message": err.message
+            });
         }
-        res.sendStatus(201);
+        return res.status(201).json({
+            "user": user
+        });
     });
 
     /*
